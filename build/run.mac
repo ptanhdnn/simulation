@@ -1,0 +1,12 @@
+# macro for simulation
+#
+/control/cout/ignoreThreadsExcept 0
+/control/verbose 2
+/run/verbose 1
+#
+/gun/particle ion
+/gun/ion 27 60
+#
+#
+#/run/printProgress 1
+/run/beamOn 100

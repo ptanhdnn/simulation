@@ -5,7 +5,7 @@ GeneratorAction::GeneratorAction()
   G4int n_Particles = 1;
   fParticleGun = new G4ParticleGun(n_Particles);
     G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
-    G4String particleName="proton";
+    G4String particleName="Geantino";
     G4ParticleDefinition *particle = particleTable->FindParticle("chargedgeantino");
 
     G4ThreeVector pos(0.,0.,0.);

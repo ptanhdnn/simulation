@@ -10,7 +10,7 @@
 #include "Randomize.hh"
 #include <iomanip>
 
-#include "g4csv.hh"
+#include "g4root.hh"
 
 
 class EventAction : public G4UserEventAction
@@ -23,12 +23,13 @@ public:
     virtual void EndOfEventAction(const G4Event*);
     
     void AddEdep(G4double edep) { fEdep += edep; }
+    void AddCount() {fcount += 1; }
 
     
 private:
     G4double fEdep;
 
-    G4int count = 0;
+    G4int fcount;
 
 
 };

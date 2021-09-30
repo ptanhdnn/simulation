@@ -21,7 +21,11 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
 	for (size_t i = 0; i < (*fSecondary).size();i++)
 	{
 		if((*fSecondary)[i]->GetDefinition())
+		{
 			G4double edep = (*fSecondary)[i] -> GetKineticEnergy();
 			fEventAction->AddEdep(edep);
+			fEventAction->AddCount();
+		}
+			
 	}
 }

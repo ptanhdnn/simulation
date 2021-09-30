@@ -13,7 +13,7 @@ EventAction::~EventAction()
 void EventAction::BeginOfEventAction(const G4Event* event)
 {  
   fEdep = 0.;
-  G4int count = 0;
+  fcount = 0;
 
 }
 
@@ -21,7 +21,11 @@ void EventAction::EndOfEventAction(const G4Event* event)
 {
   G4AnalysisManager *man = G4AnalysisManager::Instance();
 
-  man->FillNtupleDColumn(fEdep,count++);
-  man->AddNtupleRow(0);
+  man->FillNtupleDColumn(0,fEdep);
+  man->FillNtupleDColumn(1,fcount);
+  man->AddNtupleRow();
+
+  fEdep = 0.;
+  fcount = 0.;
   
 }  
