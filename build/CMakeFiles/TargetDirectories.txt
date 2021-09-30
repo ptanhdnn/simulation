@@ -1,0 +1,3 @@
+/home/aphan/g4work/simulation/build/CMakeFiles/rebuild_cache.dir
+/home/aphan/g4work/simulation/build/CMakeFiles/edit_cache.dir
+/home/aphan/g4work/simulation/build/CMakeFiles/simulation.dir

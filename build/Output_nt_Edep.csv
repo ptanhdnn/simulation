@@ -1,0 +1,4 @@
+#class tools::wcsv::ntuple
+#title Count
+#separator 44
+#vector_separator 59
