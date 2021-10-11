@@ -8,7 +8,7 @@
 /run/initialize
 #
 /gun/particle ion
-/gun/ion 64 158 64 261.4568
+/gun/ion 55 137
 /gun/energy 3 MeV
 #
 #

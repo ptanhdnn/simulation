@@ -4,9 +4,8 @@ RunAction::RunAction()
 {
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
 
-	man->CreateNtuple("Edep","Count");
+	man->CreateNtuple("Edep","Edep");
 	man->CreateNtupleDColumn("Edep");
-	man->CreateNtupleIColumn("Count");
 	man->FinishNtuple();
 }
 

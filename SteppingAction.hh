@@ -3,19 +3,21 @@
 
 #include "G4UserSteppingAction.hh"
 #include "G4Step.hh"
-#include "G4Track.hh"
-
-#include "G4ios.hh"
-#include "G4SteppingManager.hh"
-#include "G4StepPoint.hh"
-#include "G4VPhysicalVolume.hh"
-#include "G4SystemOfUnits.hh"
-
+#include "G4Event.hh"
+#include "G4RunManager.hh"
+#include "G4LogicalVolume.hh"
+//#include "G4ios.hh"
+//#include "G4VPhysicalVolume.hh"
+//#include "G4SystemOfUnits.hh"
+#include "globals.hh"
 
 #include "DetectorConstruction.hh"
 #include "EventAction.hh"
+#include "RunAction.hh"
 
 class EventAction;
+// class DetectorConstruction;
+class G4LogicalVolume;
 
 class SteppingAction : public G4UserSteppingAction
 {
@@ -27,8 +29,7 @@ public:
     
 private:
     EventAction *fEventAction;
-    G4double edep;
-    G4TrackVector* fSecondary;
+    G4LogicalVolume *fScoringVolume;
 };
 
 #endif

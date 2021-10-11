@@ -1,20 +1,21 @@
 #include "GeneratorAction.hh"
+#include "G4Geantino.hh"
 
 GeneratorAction::GeneratorAction()
 {
   G4int n_Particles = 1;
   fParticleGun = new G4ParticleGun(n_Particles);
     G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
-    G4String particleName="Geantino";
-    G4ParticleDefinition *particle = particleTable->FindParticle("chargedgeantino");
+//    G4ParticleDefinition *particle =
+//                        particleTable->FindParticle("chargedgeantino");
 
     G4ThreeVector pos(0.,0.,0.);
     G4ThreeVector mom(0.,0.,1.);
     
+//    fParticleGun->SetParticleDefinition(particle);
     fParticleGun->SetParticlePosition(pos);
     fParticleGun->SetParticleMomentumDirection(mom);
-    fParticleGun->SetParticleMomentum(0.*GeV);
-    fParticleGun->SetParticleDefinition(particle);
+    fParticleGun->SetParticleEnergy(0.*eV);
 
 }
 
@@ -27,7 +28,7 @@ void GeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
     G4ParticleDefinition* particle = fParticleGun->GetParticleDefinition();
     
-    if(particle == G4ChargedGeantino::ChargedGeantino())
+    if(particle == G4Geantino::Geantino())
     {
         G4int Z = 27;
         G4int A = 60;

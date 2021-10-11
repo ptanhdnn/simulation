@@ -3,8 +3,12 @@
 
 #include "G4UserRunAction.hh"
 #include "G4Run.hh"
+#include "globals.hh"
 
 #include "g4root.hh"
+//#include "g4csv.hh"
+
+class G4Run;
 
 class RunAction : public G4UserRunAction
 {
