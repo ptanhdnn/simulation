@@ -24,6 +24,7 @@ void RunAction::BeginOfRunAction(const G4Run *run)
 
 void RunAction::EndOfRunAction(const G4Run *run)
 {
+	G4cout << "Number of events = " << run->GetNumberOfEvent() << G4endl;
 	auto *man = G4AnalysisManager::Instance();
 
 	man->Write();

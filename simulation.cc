@@ -9,9 +9,7 @@
 
 #include "DetectorConstruction.hh"
 #include "PhysicsLists.hh"
-#include "RunAction.hh"
 #include "Actioninitialization.hh"
-#include "SteppingAction.hh"
 
 int main(int argc, char** argv)
 {
@@ -23,10 +21,10 @@ int main(int argc, char** argv)
         G4RunManager* runManager = new G4RunManager;
     #endif
     
-    runManager->SetUserInitialization(new DetectorConstruction());
+    auto detConstruction = new DetectorConstruction();
+    runManager->SetUserInitialization(detConstruction);
     runManager->SetUserInitialization(new PhysicsList());
-    runManager->SetUserInitialization(new ActionInitialization());
-    runManager->SetUserInitialization(new PhysicsList());
+    runManager->SetUserInitialization(new ActionInitialization(detConstruction));
 
     if (argc == 1)
     {

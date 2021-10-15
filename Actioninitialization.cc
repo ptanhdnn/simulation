@@ -1,6 +1,8 @@
 #include "Actioninitialization.hh"
 
-ActionInitialization::ActionInitialization()
+ActionInitialization::ActionInitialization(DetectorConstruction *detConstruction)
+: G4VUserActionInitialization(),
+  fDetConstruction(detConstruction)
 {}
 
 
@@ -23,6 +25,6 @@ void ActionInitialization::Build() const
     EventAction *eventAction = new EventAction();
     SetUserAction(eventAction);
     
-    SteppingAction *steppingAction = new SteppingAction(eventAction);
+    SteppingAction *steppingAction = new SteppingAction(eventAction, fDetConstruction);
     SetUserAction(steppingAction);
 }

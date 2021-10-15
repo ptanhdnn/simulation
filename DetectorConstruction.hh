@@ -9,7 +9,7 @@
 
 #include "G4RunManager.hh"
 #include "G4NistManager.hh"
-//#include "G4VPhysicalVolume.hh"
+#include "G4VPhysicalVolume.hh"
 #include "G4LogicalVolume.hh"
 #include "G4Box.hh"
 #include "G4Tubs.hh"
@@ -27,14 +27,15 @@ public:
 	DetectorConstruction();
 	~DetectorConstruction();
 
-	G4LogicalVolume *GetScoringVolume() const {return fScoringVolume;}
+	G4VPhysicalVolume *GetScoringVolume() const {return fScoringVolume;}
 
 	virtual G4VPhysicalVolume *Construct();
 //    virtual ConstructScintillator();
 
 private:
 	G4double fWorldSize;
-	G4LogicalVolume *logicWorld, *fScoringVolume;
+	G4LogicalVolume *logicWorld;
+	G4VPhysicalVolume *fScoringVolume;
 	G4Material *NaI;
 	G4Element *Na, *I;
 
