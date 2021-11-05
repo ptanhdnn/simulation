@@ -53,6 +53,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 								logicScintillator, "physScintillator",
 								logicWorld, false, 0, true);
 	
-	fScoringVolume = physScintillator;								
+	fScoringVolume = logicScintillator;								
 	return physWorld;
 }

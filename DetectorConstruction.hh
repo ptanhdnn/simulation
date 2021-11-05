@@ -27,7 +27,7 @@ public:
 	DetectorConstruction();
 	~DetectorConstruction();
 
-	G4VPhysicalVolume *GetScoringVolume() const {return fScoringVolume;}
+	G4LogicalVolume *GetScoringVolume() const {return fScoringVolume;}
 
 	virtual G4VPhysicalVolume *Construct();
 //    virtual ConstructScintillator();
@@ -35,7 +35,7 @@ public:
 private:
 	G4double fWorldSize;
 	G4LogicalVolume *logicWorld;
-	G4VPhysicalVolume *fScoringVolume;
+	G4LogicalVolume *fScoringVolume;
 	G4Material *NaI;
 	G4Element *Na, *I;
 

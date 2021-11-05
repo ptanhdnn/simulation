@@ -16,31 +16,56 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step *step)
 {
-/*	if(!fScoringVolume)
-	{
-		const DetectorConstruction *detectorConstruction =
-			static_cast<const DetectorConstruction*>
-			(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-		fScoringVolume = detectorConstruction->GetScoringVolume();
-	}
 
-	auto *volume = step->GetPreStepPoint()->GetTouchableHandle()
-							->GetVolume()->GetLogicalVolume();
+/*
+	auto volume = step->GetPreStepPoint()->GetTouchableHandle()
+						->GetVolume()->GetLogicalVolume();
 
 	if (volume != fScoringVolume) return;
 
-	G4double edepStep = step->GetTotalEnergyDeposit();
-	fEventAction->AddEdep(edepStep);
-/*	if((volume == fScoringVolume) && (particle == G4Gamma::Gamma()))
-	{
-		G4double edepStep = step->GetTotalEnergyDeposit();
-		fEventAction->AddEdep(edepStep);
-	}*/
+	G4Track *track = step->GetTrack();
+	G4ParticleDefinition *particle = track->GetDefinition();
+//	G4String *particleName = particle->GetParticleName();
 
-	auto volume = step->GetPreStepPoint()->GetTouchableHandle()
-						->GetVolume();
-
+	if (particle == G4Gamma::Gamma()){
 	auto edep = step->GetTotalEnergyDeposit();
 	G4cout << "Energy Step: " << edep << G4endl;
+	if (edep <= 0) return;
 	fEventAction->AddEdep(edep);
+	}*/
+
+
+/*
+	G4ParticleDefinition *particle = step->GetTrack()->GetDefinition();
+	const G4StepPoint *prePoint = step->GetPreStepPoint();
+
+	G4VPhysicalVolume *volume = prePoint->GetTouchableHandle()->GetVolume();
+
+	if (volume == fDetConstruction->GetScoringVolume())
+		if (particle == G4Gamma::Gamma())
+			{
+				G4double edep = step->GetTotalEnergyDeposit();
+				fEventAction->AddEdep(edep);
+			}*/
+
+	if (!fScoringVolume){
+		const DetectorConstruction* detectorConstruction
+		= static_cast<const DetectorConstruction*>
+		(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+		fScoringVolume = detectorConstruction->GetScoringVolume();
+	}
+
+	G4Track *track = step->GetTrack();
+	G4ParticleDefinition *particle = track->GetDefinition();
+
+	G4LogicalVolume* volume = step->GetPreStepPoint()->GetTouchableHandle()
+	->GetVolume()->GetLogicalVolume();
+
+	if (volume != fScoringVolume) return;
+
+	if (particle == G4Gamma::Gamma()){
+	G4double edep = step->GetTotalEnergyDeposit();
+	if(edep <= 0.) return;
+	fEventAction->AddEdep(edep);
+	}
 }

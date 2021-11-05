@@ -30,7 +30,7 @@ public:
 private:
     EventAction *fEventAction;
     const DetectorConstruction *fDetConstruction;
-    G4VPhysicalVolume *fScoringVolume;
+    G4LogicalVolume *fScoringVolume;
 };
 
 #endif

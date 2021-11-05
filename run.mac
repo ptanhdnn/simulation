@@ -4,7 +4,7 @@
 /control/verbose 2
 /run/verbose 1
 #
-#/run/numberOfThreads 8
+/run/numberOfThreads 8
 /run/initialize
 #
 #/gun/particle ion
@@ -13,4 +13,4 @@
 #
 #
 #/run/printProgress 10000
-/run/beamOn 10000
+/run/beamOn 1000000

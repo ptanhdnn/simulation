@@ -9,7 +9,7 @@
 #
 /gun/particle ion
 /gun/ion 55 137
-/gun/energy 3 MeV
+#/gun/energy 3 MeV
 #
 #
 #/run/printProgress 10000
