@@ -15,7 +15,7 @@
 
 class G4ParticleGun;
 class G4Event;
-class G4Box;
+
 
 class GeneratorAction : public G4VUserPrimaryGeneratorAction
 {

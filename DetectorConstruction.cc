@@ -4,7 +4,7 @@ DetectorConstruction::DetectorConstruction()
  : G4VUserDetectorConstruction(),
    fScoringVolume(0)
 {
-	fWorldSize = 5.*cm;
+	fWorldSize = 50*cm;
 }
 
 DetectorConstruction::~DetectorConstruction()
@@ -44,7 +44,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 	
 	// Scintilation detector
 
-	G4Tubs* solidScintillator = new G4Tubs("solidScintillator", 0*cm, 1.*cm, 2.*cm, 0*deg, 360*deg);
+	G4Tubs* solidScintillator = new G4Tubs("solidScintillator", 5*cm, 10.*cm, 10*cm, 0*deg, 360*deg);
 		
 	G4LogicalVolume* logicScintillator = new G4LogicalVolume(solidScintillator, NaI, "logicalScintillator");
 		

@@ -1,16 +1,28 @@
-#ifndef PHYSICS_HH
-#define PHYSICS_HH
+#ifndef PHYSICSLIST_HH
+#define PHYSICSLIST_HH
 
 #include "G4VModularPhysicsList.hh"
-#include "G4EmStandardPhysics.hh"
-#include "G4RadioactiveDecayPhysics.hh"
-#include "G4DecayPhysics.hh"
+#include "G4VUserPhysicsList.hh"
+#include "G4EmConfigurator.hh"
 
-class PhysicsList : public G4VModularPhysicsList
+class G4VPhysicsConstructor;
+
+class PhysicsList : public G4VUserPhysicsList
 {
 public:
-    PhysicsList();
-    ~PhysicsList();
+	PhysicsList();
+	~PhysicsList();
+
+	void ConstructParticle();
+	void ConstructProcess();
+
+protected:
+	void SetCuts();
+
+private:
+	G4VPhysicsConstructor *emPhysics;
+	G4VPhysicsConstructor *decayPhysics;
+	G4VPhysicsConstructor *raddecayPhysics;
 };
 
 #endif
